@@ -1,0 +1,4 @@
+- type: weightedRandom
+  id: MedievalMoneyGroups
+  weights:
+    MedievalGetMoneyObjective: 1

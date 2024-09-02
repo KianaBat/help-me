@@ -1,0 +1,6 @@
+- type: stealTargetGroup
+  id: MedievalMoney
+  name: деньги
+  sprite:
+    sprite: /Textures/Objects/Economy/cash.rsi
+    state: cash

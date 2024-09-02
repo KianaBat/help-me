@@ -1,0 +1,34 @@
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseMedievalObjective
+  components:
+  - type: Objective
+    issuer: medieval
+
+- type: entity
+  abstract: true
+  parent: [BaseMedievalObjective, BaseStealObjective]
+  id: BaseMedievalGetItemObjective
+  components:
+  - type: StealCondition
+    verifyMapExistence: false
+  - type: Objective
+    difficulty: 2.75
+  - type: ObjectiveLimit
+    limit: 1
+  # - type: RoleRequirement
+  #   roles:
+  #     components:
+  #     - MoneyCollector
+
+- type: entity
+  parent: BaseMedievalGetItemObjective
+  id: MedievalGetMoneyObjective
+  components:
+  - type: StealCondition
+    stealGroup: MedievalMoney
+    minCollectionSize: 1
+    maxCollectionSize: 20
+  - type: Objective
+    difficulty: 2

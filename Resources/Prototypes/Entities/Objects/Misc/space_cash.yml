@@ -44,6 +44,8 @@
         mask:
         - ItemMask
   - type: Appearance
+  - type: StealTarget
+    stealGroup: MedievalMoney
 
 - type: material
   id: Credit

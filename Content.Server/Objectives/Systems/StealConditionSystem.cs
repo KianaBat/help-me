@@ -10,6 +10,7 @@ using Content.Shared.Mind.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Movement.Pulling.Components;
+using Content.Shared.Stacks;
 
 namespace Content.Server.Objectives.Systems;
 
@@ -97,7 +98,7 @@ public sealed class StealConditionSystem : EntitySystem
 
         var stack = new Stack<ContainerManagerComponent>();
         var count = 0;
-
+        Logger.Debug(condition.MinCollectionSize.ToString());
         //check pulling object
         if (TryComp<PullerComponent>(mind.OwnedEntity, out var pull)) //TO DO: to make the code prettier? don't like the repetition
         {
@@ -126,8 +127,14 @@ public sealed class StealConditionSystem : EntitySystem
                 foreach (var entity in container.ContainedEntities)
                 {
                     // check if this is the item
-                    if (CheckStealTarget(entity, condition)) count++; //To Do: add support for stackable items
-
+                    if (CheckStealTarget(entity, condition))// STACK SUPPORT FOR MEDIEVAL STARTS
+                    {
+                        if (TryComp<StackComponent>(entity, out var stackComponent))
+                        {
+                            count += stackComponent.Count;
+                        }
+                        else { count++; } // STACK SUPPORT FOR MEDIEVAL ENDS
+                    }
                     // if it is a container check its contents
                     if (_containerQuery.TryGetComponent(entity, out var containerManager))
                         stack.Push(containerManager);

@@ -21,3 +21,5 @@
           Off: { state: tray-off }
   - type: StaticPrice
     price: 60
+  - type: StealTarget
+    stealGroup: tRayGroup

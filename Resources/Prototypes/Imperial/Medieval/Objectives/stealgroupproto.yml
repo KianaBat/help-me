@@ -4,3 +4,17 @@
   sprite:
     sprite: /Textures/Objects/Economy/cash.rsi
     state: cash
+
+- type: stealTargetGroup
+  id: tRayGroup
+  name: т-рэй сканнер
+  sprite:
+    sprite: Objects/Tools/t-ray.rsi
+    state: tray-off
+
+- type: stealTargetGroup
+  id: GPSgroup
+  name: ГПС
+  sprite:
+    sprite: Objects/Devices/gps.rsi
+    state: icon
